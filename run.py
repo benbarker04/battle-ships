@@ -7,7 +7,7 @@ def create_board():
     for x in range(10):
         row = [f'{x} ']
         for y in range(10):
-            empty_space =  '-'
+            empty_space =  '.'
             row.append(empty_space)
         print(' '.join(row))
 
@@ -15,14 +15,14 @@ def create_player_board(name):
     """
     Creates board for the player.
     """
-    print(f'      {name}s board')
+    print(f"      {name}'s board")
     create_board()
 
 def create_bot_board():
     """
     Creates board for the computer.
     """
-    print('       Bots board')
+    print("       Bot's board")
     create_board()
 
 def new_game():
@@ -30,7 +30,9 @@ def new_game():
     starts a new game and prints everything needed on to the console
     """
     print('Welcome to Battle Ships!')
+    print("First to destroy all of the other player's ships wins.\n")
     name = input('Enter your name:')
+    print('\n')
     create_player_board(name)
     create_bot_board()
 
