@@ -14,15 +14,19 @@ class Board:
         self.name = name
         self.board = self.create_board()
 
-    def print_board(self):
+    def print_board(self, hidden=False):
         """
         Prints the board with column labels.
+        If hidden is True, ship positions are hidden.
         """
+        if self.name:
+            print(f"{self.name}'s Board")
+        else:
+            print("Bot's board")
+
         print('   0 1 2 3 4 5 6 7 8 9')
         for i, row in enumerate(self.board):
-            print(f'{i}  {" ".join(row)}')
-        if self.name:
-            print(f'\n{self.name}\'s Board')
+            print(f'{i}  {" ".join([self.empty_space if hidden and cell == self.ship_symbol else cell for cell in row])}')
 
     def place_ships(self, num_ships):
         """
@@ -52,6 +56,6 @@ def new_game():
     bot_board.place_ships(num_ships = 10)
 
     player_board.print_board()
-    bot_board.print_board()
+    bot_board.print_board(hidden=True)
 
 new_game()
