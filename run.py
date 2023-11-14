@@ -11,4 +11,16 @@ def create_board():
             row.append(empty_space)
         print(' '.join(row))
 
-create_board()
+def create_player_board():
+    """
+    Creates board for the player.
+    """
+    print('      Players board')
+    create_board()
+
+def create_bot_board():
+    """
+    Creates board for the computer.
+    """
+    print('       Bots board')
+    create_board()
