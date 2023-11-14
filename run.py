@@ -1,3 +1,8 @@
+import random
+from random import randint
+
+
+
 def create_board():
     """
     Creates a board to be used in 2 seperate functions one to be used to make the player a board
@@ -9,6 +14,10 @@ def create_board():
         for y in range(10):
             empty_space =  '.'
             row.append(empty_space)
+
+        boat = random.randint(1, 10)
+        row[boat] = '0'
+
         print(' '.join(row))
 
 def create_player_board(name):
