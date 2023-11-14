@@ -11,11 +11,11 @@ def create_board():
             row.append(empty_space)
         print(' '.join(row))
 
-def create_player_board():
+def create_player_board(name):
     """
     Creates board for the player.
     """
-    print('      Players board')
+    print(f'      {name}s board')
     create_board()
 
 def create_bot_board():
@@ -24,3 +24,14 @@ def create_bot_board():
     """
     print('       Bots board')
     create_board()
+
+def new_game():
+    """
+    starts a new game and prints everything needed on to the console
+    """
+    print('Welcome to Battle Ships!')
+    name = input('Enter your name:')
+    create_player_board(name)
+    create_bot_board()
+
+new_game()
