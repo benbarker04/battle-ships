@@ -76,6 +76,12 @@ def bot_choice(board):
             board.board[row][col] = 'M'
         break
 
+def is_game_over(board):
+    """
+    Checks if all ships are destroyed on the given board.
+    """
+    return sum(row.count(board.ship_symbol) for row in board.board) == 0
+
 def new_game():
     """
     Starts a new game and prints everything needed on the console.
@@ -91,19 +97,31 @@ def new_game():
     player_board = Board(name = player_name)
     bot_board = Board(name = "Bot")
 
-    player_board.place_ships(num_ships = 10)
-    bot_board.place_ships(num_ships = 10)
+    player_board.place_ships(num_ships=10)
+    bot_board.place_ships(num_ships=10)
 
+    while not (is_game_over(player_board) or is_game_over(bot_board)):
+        print(f"{player_name}'s Board                 Bot's Board")
+        print('   0 1 2 3 4 5 6 7 8 9          0 1 2 3 4 5 6 7 8 9')
+
+        for i in range(len(player_board.board)):
+            print(f'{i}  {" ".join(player_board.board[i])}       {i}  {" ".join(bot_board.board[i])}')
+
+        player_choice(bot_board)
+
+        if is_game_over(bot_board):
+            print(f'\nCongratulations, {player_name}! You destroyed all of the bot\'s ships.')
+            break
+
+        bot_choice(player_board)
+
+        if is_game_over(player_board):
+            print('\nThe bot destroyed all of your ships. Better luck next time!')
+            break
+
+    print(f"\n{player_name}'s Final Board")
     player_board.print_board()
-    bot_board.print_board(hidden=True)
-
-    player_choice(bot_board)
-
-    bot_choice(player_board)
-
-    print(f"\n{player_name}'s Updated Board")
-    player_board.print_board()
-    print('\nBot\'s Updated Board')
-    bot_board.print_board(hidden=True)
+    print('\nBot\'s Final Board')
+    bot_board.print_board(hidden = True)
 
 new_game()
