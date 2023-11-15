@@ -101,7 +101,7 @@ def new_game():
     print('Rules')
     print("First to destroy all 10 of the other player's ships wins.")
     print("When a ship has been hit a '#' will appear in the position")
-    print("if you miss a 'X' will appear in that position\n")
+    print("If you miss a 'X' will appear in that position\n")
     player_name = input('Enter your name:\n')
     print()
 
