@@ -46,8 +46,8 @@ def player_choice(board):
     """
     while True:
         try:
-            row = int(input('Enter the row (0 - 9): '))
-            col = int(input('Enter the column (0 - 9): '))
+            row = int(input('Enter the row (0 - 9):\n'))
+            col = int(input('Enter the column (0 - 9):\n'))
 
             if 0 <= row < board.size and 0 <= col < board.size:
                 if board.board[row][col] in ['#', 'X']:
@@ -95,7 +95,7 @@ def new_game():
     print("First to destroy all 10 of the other player's ships wins.")
     print("When a ship has been hit a '#' will appear in the position")
     print("if you miss a 'X' will appear in that position\n")
-    player_name = input('Enter your name: ')
+    player_name = input('Enter your name:\n')
     print()
 
     player_board = Board(name = player_name)
