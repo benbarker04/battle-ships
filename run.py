@@ -14,7 +14,7 @@ class Board:
         self.name = name
         self.board = self.create_board()
 
-    def print_board(self, hidden=False):
+    def print_board(self, hidden = False):
         """
         Prints the board with column labels.
         If hidden is True, ship positions are hidden.
@@ -97,15 +97,16 @@ def new_game():
     player_board = Board(name = player_name)
     bot_board = Board(name = "Bot")
 
-    player_board.place_ships(num_ships=10)
-    bot_board.place_ships(num_ships=10)
+    player_board.place_ships(num_ships = 10)
+    bot_board.place_ships(num_ships = 10)
 
     while not (is_game_over(player_board) or is_game_over(bot_board)):
         print(f"{player_name}'s Board                 Bot's Board")
         print('   0 1 2 3 4 5 6 7 8 9          0 1 2 3 4 5 6 7 8 9')
 
         for i in range(len(player_board.board)):
-            print(f'{i}  {" ".join(player_board.board[i])}       {i}  {" ".join(bot_board.board[i])}')
+            hidden = True if bot_board.name == "Bot" else False
+            print(f'{i}  {" ".join(player_board.board[i])}       {i}  {" ".join([cell if not hidden or cell != bot_board.ship_symbol else "." for cell in bot_board.board[i]])}')
 
         player_choice(bot_board)
 
@@ -123,5 +124,6 @@ def new_game():
     player_board.print_board()
     print('\nBot\'s Final Board')
     bot_board.print_board(hidden = True)
+
 
 new_game()
