@@ -16,17 +16,17 @@ In this version of the classic game, the player will enter their name into the t
 
 The player can see where their ships are which are indicated on the board by a `0`, but will not be able to see where the computer's are.
 
-Guesses are marked on the boards with a `X` if they are incorrect and are marked with a `#` if they are correct.
+Guesses are marked on the boards with an `X` if they are incorrect and are marked with a `#` if they are correct.
 
 The player and the computer will take turns to try and guess and sink each other's battleships.
 
-THe first one to sink all of the oppenents ships is the winner.
+The first one to sink all of the opponent's ships is the winner.
 
 ## Existing Features
 
 - Random board generation
   - Ships are randomly placed on both the player's and the computer's boards.
-  - The player cannot see where the computers ships are.
+  - The player cannot see where the computer's ships are.
 
 ![randomboardgen](https://github.com/benbarker04/battle-ships/assets/131170958/53cf96af-31ed-4a91-a4be-b78e5fbc6548)
 
@@ -48,7 +48,7 @@ THe first one to sink all of the oppenents ships is the winner.
 
 - Allow the player to select the board size and the number of ships.
 - Allow the player to choose where their ships go.
-- Have ships that are larger then 1x1.
+- Have ships that are larger than 1x1.
 - Have a score counter.
 
 ## Data Model
@@ -57,23 +57,23 @@ I have decided to use a Board class as my model. The game creates two instances 
 
 The Board class stores the board size, the number of ships, the position of the ships, guesses against the board, and details such as the board type (player's board or the computer's) and the player's name.
 
-The class also has methods to play the game, such as `print_board` method to print out the current board, a `place_ships` method to place the ships onto the board.
+The class also has methods to play the game, such as `print_board` method to print out the current board and a `place_ships` method to place the ships onto the board.
 
 ## Testing
 
 I have manually tested the project by doing the following:
 - Passed the code through the PEP8 linter.
-- Given invalid inputs: strings when numbers were expected, out of bounds inputs, same input twice.
+- Given invalid inputs: strings when numbers were expected, out-of-bounds inputs, same input twice.
 - Tested in the code terminal and the Code Institue Heroku terminal.
 
 ### Bugs
 
-- When i deployed my porject to Code Institute's mock terminal for Heroku i found no bugs.
+- When I deployed my project to Code Institute's mock terminal for Heroku I found no bugs.
 
 ### Validator Testing
 
 - PEP8
-   - The only issue I had and is still left unresolved is when i passed my code through the PEP8 linter it came back saying some of my lines were to long, i spent a while trying to resolve this issue but found no solution if i had more time i would like to figure out how to solve this issue.
+   - The only issue I had and is still left unresolved is when I passed my code through the PEP8 linter it came back saying some of my lines were to long, i spent a while trying to resolve this issue but found no solution if i had more time i would like to figure out how to solve this issue.
 
 ## Deployment
 
@@ -81,6 +81,6 @@ This project was deployed using Code Institute's mock terminal for Heroku by doi
 
 - Fork or clone this repository.
 - Create a new Heroku app.
-- set the buildbacks to `Python` and `NodeJS` in that order.
+- Set the buildbacks to `Python` and `NodeJS` in that order.
 - Link the Heroku app to the repository.
 - Click on **Deploy**.
