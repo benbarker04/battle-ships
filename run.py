@@ -1,5 +1,6 @@
 import random
 
+
 class Board:
     def create_board(self):
         """
@@ -7,14 +8,14 @@ class Board:
         """
         return [['.'] * self.size for _ in range(self.size)]
 
-    def __init__(self, name = None):
+    def __init__(self, name=None):
         self.size = 10
         self.empty_space = '.'
         self.ship_symbol = '0'
         self.name = name
         self.board = self.create_board()
 
-    def print_board(self, hidden = False):
+    def print_board(self, hidden=False):
         """
         Prints the board with column labels.
         If hidden is True, ship positions are hidden.
@@ -26,7 +27,7 @@ class Board:
 
         print('   0 1 2 3 4 5 6 7 8 9')
         for i, row in enumerate(self.board):
-            print(f'{i}  {" ".join([self.empty_space if hidden and cell == self.ship_symbol else cell for cell in row])}')
+            print(f'{i}{" ".join([self.empty_space if hidden and cell==self.ship_symbol else cell for cell in row])}')
 
     def place_ships(self, num_ships):
         """
@@ -40,9 +41,11 @@ class Board:
                 col = random.randint(0, self.size - 1)
             self.board[row][col] = self.ship_symbol
 
+
 def player_choice(board):
     """
-    Takes player input for row and column on the bot's board and updates the board.
+    Takes player input for row and column on the bot's
+     board and updates the board.
     """
     while True:
         try:
@@ -65,9 +68,11 @@ def player_choice(board):
         except ValueError:
             print('Invalid input. Please enter a number.')
 
+
 def bot_choice(board):
     """
-    Simulates the bot's move on the player's board by choosing random row and column coordinates.
+    Simulates the bot's move on the player's board by choosing random
+     row and column coordinates.
     """
     while True:
         row = random.randint(0, board.size - 1)
@@ -80,11 +85,13 @@ def bot_choice(board):
             board.board[row][col] = 'X'
         break
 
+
 def is_game_over(board):
     """
     Checks if all ships are destroyed on the given board.
     """
     return sum(row.count(board.ship_symbol) for row in board.board) == 0
+
 
 def new_game():
     """
@@ -98,11 +105,11 @@ def new_game():
     player_name = input('Enter your name:\n')
     print()
 
-    player_board = Board(name = player_name)
-    bot_board = Board(name = "Bot")
+    player_board = Board(name=player_name)
+    bot_board = Board(name="Bot")
 
-    player_board.place_ships(num_ships = 10)
-    bot_board.place_ships(num_ships = 10)
+    player_board.place_ships(num_ships=10)
+    bot_board.place_ships(num_ships=10)
 
     while not (is_game_over(player_board) or is_game_over(bot_board)):
         print(f"{player_name}'s Board                 Bot's Board")
@@ -127,7 +134,7 @@ def new_game():
     print(f"\n{player_name}'s Final Board")
     player_board.print_board()
     print('\nBot\'s Final Board')
-    bot_board.print_board(hidden = True)
+    bot_board.print_board(hidden=True)
 
 
 new_game()
