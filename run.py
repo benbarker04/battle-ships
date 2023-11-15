@@ -48,14 +48,18 @@ def player_choice(board):
         try:
             row = int(input('Enter the row (0 - 9): '))
             col = int(input('Enter the column (0 - 9): '))
+
             if 0 <= row < board.size and 0 <= col < board.size:
-                if board.board[row][col] == board.ship_symbol:
-                    print('Hit!')
-                    board.board[row][col] = 'H'
+                if board.board[row][col] in ['H', 'M']:
+                    print('You have already tried this spot. Choose a different one.')
                 else:
-                    print('Miss!')
-                    board.board[row][col] = 'M'
-                break
+                    if board.board[row][col] == board.ship_symbol:
+                        print('Hit!')
+                        board.board[row][col] = 'H'
+                    else:
+                        print('Miss!')
+                        board.board[row][col] = 'M'
+                    break
             else:
                 print('Invalid input. Row and column must be between 0 and 9.')
         except ValueError:
