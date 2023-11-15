@@ -50,15 +50,15 @@ def player_choice(board):
             col = int(input('Enter the column (0 - 9): '))
 
             if 0 <= row < board.size and 0 <= col < board.size:
-                if board.board[row][col] in ['H', 'M']:
+                if board.board[row][col] in ['#', 'X']:
                     print('You have already tried this spot. Choose a different one.')
                 else:
                     if board.board[row][col] == board.ship_symbol:
                         print('Hit!')
-                        board.board[row][col] = 'H'
+                        board.board[row][col] = '#'
                     else:
                         print('Miss!')
-                        board.board[row][col] = 'M'
+                        board.board[row][col] = 'X'
                     break
             else:
                 print('Invalid input. Row and column must be between 0 and 9.')
@@ -74,10 +74,10 @@ def bot_choice(board):
         col = random.randint(0, board.size - 1)
         if board.board[row][col] == board.ship_symbol:
             print('Bot hit your ship!')
-            board.board[row][col] = 'H'
+            board.board[row][col] = '#'
         else:
             print('Bot missed!')
-            board.board[row][col] = 'M'
+            board.board[row][col] = 'X'
         break
 
 def is_game_over(board):
@@ -93,8 +93,8 @@ def new_game():
     print('Welcome to Battle Ships!')
     print('Rules')
     print("First to destroy all 10 of the other player's ships wins.")
-    print("When a ship has been hit a 'H' will appear in the position")
-    print("if nothing has been hit a 'M' will appear in that position\n")
+    print("When a ship has been hit a '#' will appear in the position")
+    print("if you miss a 'X' will appear in that position\n")
     player_name = input('Enter your name: ')
     print()
 
